@@ -12,16 +12,17 @@ async function connect() {
 
 
 
-async function insert(db, date_input, scale_input, datetime_input) {
+async function insert(db, username, email, password) {
     try {
         if (!db) {
             console.error('DB Not connected yet')
         }
         const day_input = db.collection("login");
         await day_input.insertOne({
-            date: date_input,
-            scale: scale_input, 
-            datetime: datetime_input,
+            username: username,
+            email: email,
+            password: password,
+            report: []
         });
         console.log('Inserted');
     }
@@ -31,6 +32,24 @@ async function insert(db, date_input, scale_input, datetime_input) {
    }
 }
 
+
+
+async function update(db, email, new_report) { 
+    try {
+        if (!db) {
+            console.error('DB Not connected yet')
+        }
+        const day_input = db.collection("login");
+        await day_input.updateOne(
+            {email: email,}, // find
+            {$push: {report: new_report} } // update the value in that set
+        );
+        console.log('Updated');
+    }
+    catch (error) {
+        console.error('Update error', error);
+    }
+}
 
 async function retrieveList(db, collection_name) {
     try {
@@ -50,8 +69,10 @@ async function retrieveList(db, collection_name) {
 async function execute() {
     const db = await connect();
     //await insertTime(db);
-    await insert(db, 'today lol', 100, 'timelol');
+    await insert(db, 'name lol', "email", "pass");
     //await insertNight(db, 'today lol', '11:00', '12:00');
+    await retrieveList(db, 'login');
+    await update(db, 'email', "REPORT ADD LOL")
     await retrieveList(db, 'login');
 }
 
@@ -61,5 +82,6 @@ execute();
 module.exports = {
     connect,
     insert,
-    retrieveList
+    retrieveList,
+    update
 }
