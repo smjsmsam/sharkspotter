@@ -54,6 +54,33 @@ async function update(db, email, new_report) {
 }
 
 
+async function insertResources(db, type, resource) {
+    try {
+        if (!db) {
+            console.error('DB Not connected yet')
+        }
+        const community_reports = db.collection("Resources");
+        if (type === "period") {
+            await community_reports.insertOne({
+                period: resource
+            });
+            console.log('Inserted Period');
+        }
+        if (type === "bathroom") {
+            await community_reports.insertOne({
+                bathroom: resource
+            });
+            console.log('Inserted Bathroom');
+        }
+    }
+    catch (error) {
+        console.error('Insert error', error);
+        process.exit();
+   }
+}
+
+
+
 async function insertCommunityReport(db, report) {
     try {
         if (!db) {
@@ -88,12 +115,12 @@ async function retrieveList(db, collection_name) {
 
 async function execute() {
     const db = await connect();
-    //await insertTime(db);
-    await insert(db, 'name lol', "email", "pass");
-    //await insertNight(db, 'today lol', '11:00', '12:00');
-    await retrieveList(db, 'login');
-    await update(db, 'email', "REPORT ADD LOL")
-    await retrieveList(db, 'CommunityReports');
+    //await insert(db, 'name lol', "email", "pass");
+    //await retrieveList(db, 'login');
+    //await update(db, 'email', "REPORT ADD LOL")
+    //await retrieveList(db, 'CommunityReports');
+    await insertResources(db, 'bathroom', "bathroom place")
+    await retrieveList(db, 'Resources');
 }
 
 
