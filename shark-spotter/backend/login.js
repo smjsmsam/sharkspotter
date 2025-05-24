@@ -2,15 +2,21 @@ import { run } from './db_connect.js';
 import { connect, insert, retrieveList, update } from './operations.js';
 
 
-async function verifyUser(db, username, password) {
+async function verifyUser(db, email, password) {
     try {
         if (!db) {
             console.error('DB Not connected yet');
             return false;
         }
-        const user = await db.collection("login").findOne({username: username});
+        const user = await db.collection("login").findOne({email: email});
         if (user && user['password'] == password) {
-            localStorage.setItem("user", username);
+            // set cookie here for id, username
+            // const userFound = await db.collection("login").findOne({_id: user["_id"]});  // just checking
+            if (!userFound) {
+                console.log(":( oh no");
+                return false;
+            }
+            console.log("YAY");
             return true;
         }
         return false;
@@ -20,3 +26,6 @@ async function verifyUser(db, username, password) {
         return false;
    }
 }
+
+const db = await connect();
+verifyUser(db, "email", "pass");
