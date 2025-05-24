@@ -120,7 +120,7 @@ async function execute() {
     //await retrieveList(db, 'login');
     //await update(db, 'email', "REPORT ADD LOL")
     //await retrieveList(db, 'CommunityReports');
-    await insertResources(db, 'bathroom', "bathroom place")
+    //await insertResources(db, 'bathroom', "bathroom place")
     await retrieveList(db, 'Resources');
 }
 
