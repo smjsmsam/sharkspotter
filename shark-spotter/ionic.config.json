@@ -1,0 +1,7 @@
+{
+  "name": "shark-spotter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
