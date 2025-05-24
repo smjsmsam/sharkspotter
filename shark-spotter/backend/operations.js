@@ -130,5 +130,7 @@ module.exports = {
     connect,
     insert,
     retrieveList,
-    update
+    update,
+    insertResources,
+    insertCommunityReport
 }

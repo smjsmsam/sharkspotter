@@ -2,7 +2,7 @@
 require('./db_connect');  // Ensure this is required first to load the dotenv and MongoDB connection
 const express = require('express');
 const cors = require('cors');
-const { connect, insert, retrieveList, update } = require('./operations');
+const { connect, insert, retrieveList, update, insertResources, insertCommunityReport } = require('./operations');
 const app = express();
 const port = process.env.PORT || 3000;
 
