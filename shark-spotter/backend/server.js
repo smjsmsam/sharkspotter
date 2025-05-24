@@ -18,6 +18,29 @@ connect().then((dbConnection) => {
 });
 
 
+app.get('/api/retrieveData', async (req, res) => {
+  try {
+    const { type } = req.query;
+    const data = await retrieveList(db, type);
+    console.log('RETRIEVING', type);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error retrieving list' });
+  }
+});
+
+app.post('/api/insertDayData', async (req, res) => {
+  console.log("HIII");
+  const { date, scale, datetime } = req.body; // Could simplify and combine insertion to 1 function, but for clarity left as is
+  try {
+    await insertDay(db, date, scale, datetime);
+    console.log('DATA INSERTED BACKEND');
+    res.status(201).json({ message: 'Day data inserted!' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error inserting day data' });
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

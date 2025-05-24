@@ -1,0 +1,18 @@
+#map {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+ion-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10; /* high enough to be on top */
+}
+ion-content, .ion-content {
+  --padding-top: 0;
+}
