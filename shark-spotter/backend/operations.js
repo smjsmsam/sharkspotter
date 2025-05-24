@@ -16,6 +16,7 @@ async function insert(db, username, password) {
     try {
         if (!db) {
             console.error('DB Not connected yet')
+            return {'status': 'error', 'message': 'Database not connected.'};
         }
         const login = db.collection("login");
         await login.insertOne({
@@ -24,6 +25,7 @@ async function insert(db, username, password) {
             report: []
         });
         console.log('Inserted');
+        return {'status': 'success', 'message': 'Successfully created a new User.'};
     }
     catch (error) {
         console.error('Insert error', error);

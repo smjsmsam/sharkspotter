@@ -9,10 +9,15 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class LoginService{
     constructor(private http: HttpClient) {}
 
-    public async retrieveUser(email: string, password: string): Promise<any> {
-        const body = {email, password};
-		//const params = new HttpParams().set('email', email).set('password', password);
+    public async retrieveUser(username: string, password: string): Promise<any> {
+        const body = {username, password};
 		const response = await firstValueFrom(this.http.post('http://localhost:3000/api/verifyUser', body));
         return response;
 	}
+
+    public async createUser(username: string, password: string): Promise<any> {
+        const body = {username, password};
+		const response = await firstValueFrom(this.http.post('http://localhost:3000/api/insertUser', body));
+        return response;
+    }
 }

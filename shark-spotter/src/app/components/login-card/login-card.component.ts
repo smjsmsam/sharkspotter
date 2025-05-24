@@ -62,12 +62,18 @@ export class LoginCardComponent  implements OnInit {
         console.log("Some error: " + resultJson.errorMsg);
       }
     } catch (err: any) {
+      console.log(err);
       if (err.status === 0) {
         this.errorMsg = 'Server not running.';
       } else {
-        this.errorMsg = 'Login failed: ' + err.error.error;
+        if (err.error.message == "Invalid username") {
+          const resultJson = await this.service.createUser(this.email, this.password);
+          console.log(resultJson);
+          this.errorMsg = resultJson.message + " Please log in again.";
+        } else {
+          this.errorMsg = 'Login failed: ' + err.error.message;
+        }
       }
-      console.log(err);
     }
   }
 
