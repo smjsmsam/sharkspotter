@@ -52,19 +52,22 @@ export class LoginCardComponent  implements OnInit {
   }
   
   async goToHomePage() {
-    //TODO: validate sign in
     try {
       const resultJson = await this.service.retrieveUser(this.email, this.password);
       if (resultJson.status == "success") {
         console.log(resultJson);
         this.router.navigate(['/tabs/home'])
       } else {
-        this.errorMsg = 'Login failed: ' + resultJson.errorMsg;
-        console.log(resultJson.errorMsg);
+        this.errorMsg = ':' + resultJson.errorMsg;
+        console.log("Some error: " + resultJson.errorMsg);
       }
-    } catch (error) {
-      this.errorMsg = 'Login failed: ' + error;
-      console.error(error);
+    } catch (err: any) {
+      if (err.status === 0) {
+        this.errorMsg = 'Server not running.';
+      } else {
+        this.errorMsg = 'Login failed: ' + err.error.error;
+      }
+      console.log(err);
     }
   }
 
