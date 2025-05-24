@@ -1,10 +1,14 @@
-div {
-    display: flex;
-    width: 100vw;
-    flex-direction: row;
-    align-items: center;
-    flex-shrink: 0;
-    justify-content: space-between;
-    padding-left: 6vw;
-    padding-right: 6vw;
+body {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('../../../assets/Shark\ Pattern\ BG.png');
+    background-repeat: repeat;
+    background-size: 300px;
+    background-blend-mode: lighten;
+}
+
+#logout-container {
+    text-align: center;
+}
+
+ion-button {
+    padding: 10px;
 }
