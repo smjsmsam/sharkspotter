@@ -1,8 +1,6 @@
-import { run } from './db_connect.js';
-import { connect } from './operations.js';
 
 
-export async function verifyUser(db, email, password) {
+async function verifyUser(db, email, password) {
     try {
         if (!db) {
             console.error('DB Not connected yet');
