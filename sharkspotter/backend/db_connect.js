@@ -23,7 +23,7 @@ async function run() {
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
-    db = client.db('SnoreScope') // connect to specific database
+    db = client.db('SharkSpotter') // connect to specific database
     return db;
   }
   catch (error) {
