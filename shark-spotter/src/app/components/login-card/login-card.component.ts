@@ -36,7 +36,7 @@ export class LoginCardComponent  implements OnInit {
 
   inputModel = '';
   errorMsg = '';
-  email = '';
+  username = '';
   password = '';
 
   @ViewChild('ionInputEl', { static: true }) ionInputEl!: IonInput;
@@ -56,9 +56,9 @@ export class LoginCardComponent  implements OnInit {
       const userSession = await this.service.isLoggedIn();
       console.log(userSession);
 
-      // email is now user
-      const resultJson = await this.service.retrieveUser(this.email, this.password);
+      const resultJson = await this.service.retrieveUser(this.username, this.password);
       if (resultJson.status == "success") {
+        this.errorMsg = '';
         this.router.navigate(['/tabs/home']);
       } else {
         this.errorMsg = ':' + resultJson.errorMsg;
@@ -70,7 +70,7 @@ export class LoginCardComponent  implements OnInit {
         this.errorMsg = 'Server not running.';
       } else {
         if (err.error.message == "Invalid username") {
-          const resultJson = await this.service.createUser(this.email, this.password);
+          const resultJson = await this.service.createUser(this.username, this.password);
           console.log(resultJson);
           this.errorMsg = resultJson.message + " Please log in again.";
         } else {
