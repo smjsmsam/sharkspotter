@@ -20,4 +20,9 @@ export class LoginService{
 		const response = await firstValueFrom(this.http.post('http://localhost:3000/api/insertUser', body));
         return response;
     }
+
+    public async isLoggedIn(): Promise<any> {
+        const response = await firstValueFrom(this.http.get('http://localhost:3000/api/userStatus'));
+        return response;
+    }
 }

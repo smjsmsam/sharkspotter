@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 let db;
-let user = {'email': '', 'username': ''};
+let user = {'username': ''};
 
 connect().then((dbConnection) => {
   db = dbConnection;
@@ -85,3 +85,23 @@ app.post('/api/insertUser', async (req, res) => {
   }
 });
 
+
+app.get('/api/userStatus', async (req, res) => {
+  // is logged in?
+  try {
+    if (user.username != '') {
+      const tempUser = user;
+      tempUser.status = 'success';
+      tempUser.message = 'Logged in.';
+      res.status(201).json(tempUser);
+    } else {
+      const tempUser = user;
+      tempUser.status = 'error';
+      tempUser.message = 'Not logged in.';
+      res.status(201).json(tempUser);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'What is going on?' });
+  }
+});
