@@ -20,9 +20,5 @@ export const routes: Routes = [
     {
         path: 'forum',
         loadComponent: () => import('./pages/forum/forum.page').then( m => m.ForumPage)
-    },
-    {
-        path: 'maptest',
-        loadComponent: () => import('./pages/maptest/maptest.page').then( m => m.MaptestPage)
     }
 ];
