@@ -25,4 +25,10 @@ export class LoginService{
         const response = await firstValueFrom(this.http.get('http://localhost:3000/api/userStatus'));
         return response;
     }
+
+    public async logout(): Promise<any> {
+        const response = await firstValueFrom(this.http.post('http://localhost:3000/api/userLogout', ""));
+        return response;
+    }
+    
 }

@@ -87,7 +87,7 @@ app.post('/api/insertUser', async (req, res) => {
 
 
 app.get('/api/userStatus', async (req, res) => {
-  // is logged in?
+  console.log("/insertUser");
   try {
     if (user.username != '') {
       const tempUser = user;
@@ -104,4 +104,11 @@ app.get('/api/userStatus', async (req, res) => {
     console.log(error);
     res.status(500).json({ error: 'What is going on?' });
   }
+});
+
+
+app.post('/api/userLogout', async (req, res) => {
+  console.log("/userLogout");
+  user = {'username': ''};
+  res.status(201).json({'status': 'success', 'message': 'Succesfully logged out.'});
 });
