@@ -37,7 +37,7 @@ export class LoginCardComponent  implements OnInit {
     const value = (event.target as HTMLIonInputElement).value ?? '';
 
     //remove non-alphanumeric characters
-    const filteredValue = (value as string).replace(/[^a-zA-Z0-9]+/g, '');
+    const filteredValue = (value as string).replace(/[^a-zA-Z0-9@._-]/g, '');
 
     //sync state variable and component
     this.ionInputEl.value = this.inputModel = filteredValue;
