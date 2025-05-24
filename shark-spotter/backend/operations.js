@@ -12,7 +12,7 @@ async function connect() {
 
 
 
-async function insert(db, username, email, password) {
+async function insert(db, username, password) {
     try {
         if (!db) {
             console.error('DB Not connected yet')
@@ -20,7 +20,6 @@ async function insert(db, username, email, password) {
         const login = db.collection("login");
         await login.insertOne({
             username: username,
-            email: email,
             password: password,
             report: []
         });
@@ -34,14 +33,14 @@ async function insert(db, username, email, password) {
 
 
 
-async function update(db, email, new_report) { 
+async function update(db, username, new_report) { // update personal report and then add to community reports
     try {
         if (!db) {
             console.error('DB Not connected yet')
         }
         const reports = db.collection("login");
         await reports.updateOne(
-            {email: email,}, // find
+            {username: username,}, // find
             {$push: {report: new_report} } // update the value in that set
         );
         const community_reports = db.collection("CommunityReports");
@@ -54,7 +53,24 @@ async function update(db, email, new_report) {
 }
 
 
-async function insertResources(db, type, resource) {
+async function insertCommunityReport(db, report) { // community reports added to previous function
+    try {
+        if (!db) {
+            console.error('DB Not connected yet')
+        }
+        const community_reports = db.collection("CommunityReports");
+        await community_reports.insertOne({
+            report
+        });
+        console.log('Inserted Community Report');
+    }
+    catch (error) {
+        console.error('Insert error', error);
+        process.exit();
+   }
+}
+
+async function insertResources(db, type, resource) { 
     try {
         if (!db) {
             console.error('DB Not connected yet')
@@ -80,23 +96,6 @@ async function insertResources(db, type, resource) {
 }
 
 
-
-async function insertCommunityReport(db, report) {
-    try {
-        if (!db) {
-            console.error('DB Not connected yet')
-        }
-        const community_reports = db.collection("CommunityReports");
-        await community_reports.insertOne({
-            report
-        });
-        console.log('Inserted Community Report');
-    }
-    catch (error) {
-        console.error('Insert error', error);
-        process.exit();
-   }
-}
 
 async function retrieveList(db, collection_name) {
     try {

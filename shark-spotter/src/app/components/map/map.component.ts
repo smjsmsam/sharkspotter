@@ -67,8 +67,8 @@ export class MapComponent implements OnInit, AfterViewInit {
   this.map.once('rendercomplete', () => {
     const canvas = document.querySelector('#map canvas') as HTMLCanvasElement | null;
     if (canvas) {
-      canvas.style.filter = 'sepia(20%) saturate(250%) hue-rotate(300deg) brightness(105%)';
-      canvas.style.opacity = '0.95'
+      canvas.style.filter = 'sepia(30%) saturate(250%) hue-rotate(300deg) brightness(105%)';
+      // canvas.style.opacity = '0.95'
     }
 
   });
