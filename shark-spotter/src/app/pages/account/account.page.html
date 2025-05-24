@@ -1,7 +1,7 @@
 <body>
   <app-header [text]="username"></app-header>
   <div id="logout-container">
-    <ion-button>Logout</ion-button>
+    <ion-button (click)="logout()">Logout</ion-button>
   </div>
   <app-report-log></app-report-log>
 </body>

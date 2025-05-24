@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
+
 import {
   IonButton,
   IonHeader,
@@ -24,11 +27,25 @@ import { ReportLogComponent } from 'src/app/components/report-log/report-log.com
 })
 export class AccountPage implements OnInit {
   //TODO
-  username = "Username here :)";
+  username = "Username here :)"
+  ;
 
-  constructor() { }
+  constructor(private router: Router, private service:LoginService) { }
+
+  async replaceUsername() {
+    const userSession = await this.service.isLoggedIn();
+    console.log(userSession);
+    this.username = userSession.username;
+  }
+
+async logout() {
+    const userSession = await this.service.logout();
+    this.router.navigate(['/login']);
+
+  }
 
   ngOnInit() {
+    this.replaceUsername();
   }
 
 }
