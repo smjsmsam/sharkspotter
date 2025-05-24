@@ -1,33 +1,49 @@
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>Shark Shooter</ion-card-title>
-    <ion-card-subtitle>Sign Up or Log In</ion-card-subtitle>
-  </ion-card-header>
+<div id="container">
+  <div id="title-container">
+    <div id="title-overlay">
+      Shark Spotter
+      <span>Shark Spotter</span>
+    </div>
+  </div>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Sign Up or Log In</ion-card-subtitle>
+    </ion-card-header>
 
-  <ion-card-content>
-    <ion-input 
-      #ionInputEl
-      label="Email" 
-      labelPlacement="floating"
-      [value]="inputModel"
-      (ionInput)="onInput($event)"
-      [(ngModel)]="email"
-      placeholder="Enter email">
-    </ion-input>
-    <ion-input
-      label="Password"
-      labelPlacement="floating" 
-      type="password"
-      [(ngModel)]="password"
-      placeholder="Enter password">
-    </ion-input>
-  </ion-card-content>
+    <ion-card-content>
+      <div class="input-container">
+        <ion-input class="input-field" 
+          #ionInputEl
+          label="Username" 
+          labelPlacement="floating"
+          [value]="inputModel"
+          (ionInput)="onInput($event)"
+          [(ngModel)]="email"
+          placeholder="Enter username">
+        </ion-input>
+      </div>
+    </ion-card-content>
+    <ion-card-content>
+      <div class="input-container">
+        <ion-input class="input-field"
+          label="Password"
+          labelPlacement="floating" 
+          type="password"
+          [(ngModel)]="password"
+          placeholder="Enter password">
+        </ion-input>
+      </div>
+      
+    </ion-card-content>
 
-  <ion-button
-    (click)="goToHomePage()">
-    Continue
-  </ion-button>
-  <div *ngIf="errorMsg" style="color: red; margin-top: 10px;">
+    <ion-button
+      shape="round"
+      (click)="goToHomePage()">
+      Continue
+    </ion-button>
+    <div *ngIf="errorMsg" style="color: red; margin-top: 10px;">
       {{ errorMsg }}
     </div>
-</ion-card>
+  </ion-card>
+</div>
