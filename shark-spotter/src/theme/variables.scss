@@ -2,7 +2,20 @@
 // http://ionicframework.com/docs/theming/
 
 ion-button {
- text-transform: none;
+    text-transform: none;
+
+    --display: flex;
+    // --width: 100px;
+    // --height: 32px;
+    --padding: 2px 8px;
+    --justify-content: center;
+    --align-items: center;
+    --flex-shrink: 0;
+    --border-radius: 20px;
+    --background: #EB82B5;
+
+    /* Dark pink drop shadow */
+    --box-shadow: 0px 4px 0px 0px #BD457F;
 }
 
 :root {

@@ -10,8 +10,9 @@ export class LoginService{
     constructor(private http: HttpClient) {}
 
     public async retrieveUser(email: string, password: string): Promise<any> {
-		const params = new HttpParams().set('email', email).set('password', password);
-		const response = await firstValueFrom(this.http.post('http://localhost:3000/api/verifyUser', { params: params }));
+        const body = {email, password};
+		//const params = new HttpParams().set('email', email).set('password', password);
+		const response = await firstValueFrom(this.http.post('http://localhost:3000/api/verifyUser', body));
         return response;
 	}
 }

@@ -1,0 +1,10 @@
+div {
+    display: flex;
+    width: 100vw;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: space-between;
+    padding-left: 6vw;
+    padding-right: 6vw;
+}

@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 let db;
-let user;
+let user = {'email': '', 'username': ''};
 
 connect().then((dbConnection) => {
   db = dbConnection;
@@ -60,9 +60,10 @@ app.post('/api/verifyUser', async (req, res) => {
       res.status(201).json(result);
     } else {
       errorMessage = result.err_msg;
-      res.status(401).json({ error: err_msg });
+      res.status(401).json({ error: errorMessage });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: 'Could not connect to server.' });
   }
 });
