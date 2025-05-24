@@ -37,39 +37,48 @@ export class MapComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit(): void {
-    const markerLayer = new VectorLayer({
-      source: this.vectorSource,
-      style: new Style({
-        image: new Icon({
-          anchor: [0.5, 1],
-          src: 'assets/icon/favicon.png', // Make sure this image exists
-          scale: 0.1,
-        }),
+  const markerLayer = new VectorLayer({
+    source: this.vectorSource,
+    style: new Style({
+      image: new Icon({
+        anchor: [0.5, 1],
+        src: 'assets/Shark Search.png',
+        scale: 0.03,
       }),
-    });
+    }),
+  });
 
-    this.map = new Map({
-      target: 'map',
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-        markerLayer,
-      ],
-      view: new View({
-        center: fromLonLat([-118.2437, 34.0522]),
-        zoom: 10,
+  this.map = new Map({
+    target: 'map',
+    layers: [
+      new TileLayer({
+        source: new OSM(),
       }),
-      controls: defaultControls(),
-    });
+      markerLayer,
+    ],
+    view: new View({
+      center: fromLonLat([-118.2437, 34.0522]),
+      zoom: 10,
+    }),
+    controls: defaultControls(),
+  });
 
-    this.map.on('dblclick', (event) => {
-      const marker = new Feature({
-        geometry: new Point(event.coordinate),
-      });
+  // Apply the color filter to the map's canvas after render
+  this.map.once('rendercomplete', () => {
+    const canvas = document.querySelector('#map canvas') as HTMLCanvasElement | null;
+    if (canvas) {
+      canvas.style.filter = 'sepia(20%) saturate(250%) hue-rotate(300deg) brightness(105%)';
+      canvas.style.opacity = '0.95'
+    }
 
-      this.vectorSource.addFeature(marker);
-      console.log('Marker added at:', event.coordinate);
+  });
+
+  this.map.on('dblclick', (event) => {
+    const marker = new Feature({
+      geometry: new Point(event.coordinate),
     });
-  }
+    this.vectorSource.addFeature(marker);
+    console.log('Marker added at:', event.coordinate);
+  });
+}
 }
