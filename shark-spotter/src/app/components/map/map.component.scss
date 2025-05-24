@@ -4,7 +4,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
+  /* z-index: 0;*/
 }
 
 ion-header {
@@ -12,7 +12,7 @@ ion-header {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10; /* high enough to be on top */
+  /* z-index: 10; /* high enough to be on top */
 }
 ion-content, .ion-content {
   --padding-top: 0;
@@ -22,5 +22,5 @@ ion-content, .ion-content {
   top: 0; left: 0; right: 0; bottom: 0;
   background-color: rgba(217, 25, 57, 0.3);
   pointer-events: none;
-  z-index: 1000; /* high */
+  /* z-index: 1000; /* high */
 }

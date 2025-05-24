@@ -12,22 +12,27 @@ import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
+import { MapMarkerComponent } from '../map-marker/map-marker.component';
+import { CommonModule } from '@angular/common'; 
+
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
-  standalone: true,
   imports: [
+    CommonModule,
     IonSearchbar,
     IonHeader,
     IonToolbar,
     IonTitle,
     IonContent,
+    MapMarkerComponent
   ]
 })
 export class MapComponent implements OnInit, AfterViewInit {
   map!: Map;
+  showMarkerCard = false;
 
   // Declare vector source outside so it's accessible in the whole component
   private vectorSource = new VectorSource();
@@ -42,7 +47,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     style: new Style({
       image: new Icon({
         anchor: [0.5, 1],
-        src: 'assets/Shark Search.png',
+        src: 'assets/Shark_Period_Map.png',
         scale: 0.03,
       }),
     }),
@@ -79,6 +84,18 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
     this.vectorSource.addFeature(marker);
     console.log('Marker added at:', event.coordinate);
+    this.showMarkerCard = true
   });
 }
+
+// Optional: manual close
+  closeMarkerCard() {
+    this.showMarkerCard = false;
+  }
+
+  // Used by the (close) output from <app-map-marker>
+  onMarkerCardClose() {
+    this.showMarkerCard = false;
+  }
+
 }

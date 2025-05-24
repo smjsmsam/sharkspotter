@@ -15,5 +15,7 @@
 </ion-content>
 <div id="map-container" style="position: relative; width: 100%; height: 100%;">
   <div id="map" style="width: 100%; height: 100%;"></div>
-  <div id="pink-overlay"></div>
+  <!-- <div id="pink-overlay"></div> -->
 </div>
+
+<app-map-marker *ngIf="showMarkerCard" (close)="onMarkerCardClose()"></app-map-marker> 
