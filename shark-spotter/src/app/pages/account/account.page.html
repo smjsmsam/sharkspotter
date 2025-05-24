@@ -1,13 +1,7 @@
-<ion-avatar>
-  <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-</ion-avatar>
-<h1>Username here</h1>
-<div>
-  <ion-button>Logout</ion-button>
-  <ion-button>Edit Profile</ion-button>
-  
-</div>
-
-
-<app-submit-report-card></app-submit-report-card>
-<app-report-log></app-report-log>
+<body>
+  <app-header [text]="username"></app-header>
+  <div id="logout-container">
+    <ion-button>Logout</ion-button>
+  </div>
+  <app-report-log></app-report-log>
+</body>

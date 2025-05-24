@@ -1,15 +1,21 @@
-<ion-tabs>
+<ion-tabs #tabs (ionTabsDidChange)="onTabChange($event)">
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="forum" href="/tabs/forum">
-      <img src="../assets/Shark_Forum.png">
+      <img src="../assets/Shark_Forum.png" *ngIf="selectedTab !== 'forum'">
+      <!-- this should be pink below  -->
+      <img src="../assets/Selected_Forum.png" *ngIf="selectedTab == 'forum'">
     </ion-tab-button>
 
     <ion-tab-button tab="home" href="/tabs/home">
-      <img src="../assets/Shark_Search.png">
+      <img src="../assets/Shark_Search.png" *ngIf="selectedTab !== 'home'">
+      <!-- this should be pink below  -->
+      <img src="../assets/Selected_Home.png" *ngIf="selectedTab == 'home'">
     </ion-tab-button>
 
     <ion-tab-button tab="account" href="/tabs/account">
-      <img src="../assets/Shark_Profile.png">
+      <img src="../assets/Shark_Profile.png" *ngIf="selectedTab !== 'account'">
+      <!-- this should be pink below  -->
+      <img src="../assets/Selected_Profile.png" *ngIf="selectedTab == 'account'">
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

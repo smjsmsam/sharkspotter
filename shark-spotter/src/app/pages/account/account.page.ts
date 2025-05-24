@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  IonAvatar,
   IonButton,
+  IonHeader,
+  IonToolbar,
+  IonTitle
 } from '@ionic/angular/standalone';
-import { SubmitReportCardComponent } from 'src/app/components/submit-report-card/submit-report-card.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { ReportLogComponent } from 'src/app/components/report-log/report-log.component';
 
 @Component({
@@ -12,13 +14,17 @@ import { ReportLogComponent } from 'src/app/components/report-log/report-log.com
   styleUrls: ['./account.page.scss'],
   standalone: true,
   imports: [
-    IonAvatar,
     IonButton,
-    SubmitReportCardComponent,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    HeaderComponent,
     ReportLogComponent,
   ]
 })
 export class AccountPage implements OnInit {
+  //TODO
+  username = "Username here :)";
 
   constructor() { }
 
