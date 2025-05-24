@@ -11,12 +11,14 @@
       labelPlacement="floating"
       [value]="inputModel"
       (ionInput)="onInput($event)"
+      [(ngModel)]="email"
       placeholder="Enter email">
     </ion-input>
     <ion-input
       label="Password"
       labelPlacement="floating" 
       type="password"
+      [(ngModel)]="password"
       placeholder="Enter password">
     </ion-input>
   </ion-card-content>
@@ -25,4 +27,7 @@
     (click)="goToHomePage()">
     Continue
   </ion-button>
+  <div *ngIf="errorMsg" style="color: red; margin-top: 10px;">
+      {{ errorMsg }}
+    </div>
 </ion-card>

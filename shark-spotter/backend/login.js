@@ -1,25 +1,22 @@
 import { run } from './db_connect.js';
-import { connect, insert, retrieveList, update } from './operations.js';
+import { connect } from './operations.js';
 
 
-async function verifyUser(db, email, password) {
+export async function verifyUser(db, email, password) {
     try {
         if (!db) {
             console.error('DB Not connected yet');
             return false;
         }
         const user = await db.collection("login").findOne({email: email});
-        if (user && user['password'] == password) {
-            // set cookie here for id, username
-            // const userFound = await db.collection("login").findOne({_id: user["_id"]});  // just checking
-            if (!userFound) {
-                console.log(":( oh no");
-                return false;
-            }
-            console.log("YAY");
-            return true;
+        if (!user) {
+            return {'status': 'error', 'err_msg': 'Invalid Email'};
         }
-        return false;
+        if (user['password'] == password) {
+            user.status = 'success';
+            return user;
+        }
+        return {'status': 'error', 'err_msg': 'Invalid Password'};
     }
     catch (error) {
         console.error('Database Connection Error at Login Username', error);
@@ -27,5 +24,6 @@ async function verifyUser(db, email, password) {
    }
 }
 
-const db = await connect();
-verifyUser(db, "email", "pass");
+module.exports = {
+    verifyUser
+}

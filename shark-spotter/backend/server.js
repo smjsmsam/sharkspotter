@@ -3,6 +3,7 @@ require('./db_connect');  // Ensure this is required first to load the dotenv an
 const express = require('express');
 const cors = require('cors');
 const { connect, insert, retrieveList, update, insertResources, insertCommunityReport } = require('./operations');
+const { verifyUser } = require('./login');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -10,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 let db;
+let user;
 
 connect().then((dbConnection) => {
   db = dbConnection;
@@ -44,4 +46,23 @@ app.post('/api/insertDayData', async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
+});
+
+
+app.post('/api/verifyUser', async (req, res) => {
+  console.log("/verifyUser");
+  const { email, password } = req.body;
+  try {
+    result = await verifyUser(db, email, password);
+    if (result.status == 'success') {
+      user.username = result.username;
+      user.email = result.email;
+      res.status(201).json(result);
+    } else {
+      errorMessage = result.err_msg;
+      res.status(401).json({ error: err_msg });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Could not connect to server.' });
+  }
 });

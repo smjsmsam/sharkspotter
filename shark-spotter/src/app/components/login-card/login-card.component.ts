@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import {
   IonButton,
   IonCard,
@@ -16,6 +19,8 @@ import {
   templateUrl: './login-card.component.html',
   styleUrls: ['./login-card.component.scss'],
   imports: [
+    CommonModule,
+    FormsModule,
     IonButton,
     IonCard,
     IonCardContent,
@@ -27,9 +32,12 @@ import {
 })
 export class LoginCardComponent  implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service:LoginService) { }
 
   inputModel = '';
+  errorMsg = '';
+  email = '';
+  password = '';
 
   @ViewChild('ionInputEl', { static: true }) ionInputEl!: IonInput;
 
@@ -42,11 +50,22 @@ export class LoginCardComponent  implements OnInit {
     //sync state variable and component
     this.ionInputEl.value = this.inputModel = filteredValue;
   }
-
-  goToHomePage() {
+  
+  async goToHomePage() {
     //TODO: validate sign in
-
-    this.router.navigate(['/tabs/home'])
+    try {
+      const resultJson = await this.service.retrieveUser(this.email, this.password);
+      if (resultJson.status == "success") {
+        console.log(resultJson);
+        this.router.navigate(['/tabs/home'])
+      } else {
+        this.errorMsg = 'Login failed: ' + resultJson.errorMsg;
+        console.log(resultJson.errorMsg);
+      }
+    } catch (error) {
+      this.errorMsg = 'Login failed: ' + error;
+      console.error(error);
+    }
   }
 
   ngOnInit() {}
