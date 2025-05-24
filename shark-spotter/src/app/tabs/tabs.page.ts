@@ -24,7 +24,7 @@ export class TabsPage {
     addIcons({ triangle, ellipse, square });
   }
 
-  onTabChange(event: any) {
+  onTabChange(event: {tab: string}) {
     this.selectedTab = event.tab;
   }
 }
