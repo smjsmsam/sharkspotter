@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginCardComponent } from 'src/app/components/login-card/login-card.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
