@@ -4,29 +4,3 @@ html {
     background-size: 300px;
     background-blend-mode: lighten;
 }
-
-#forumHeader {
-    display: flex;
-    height: 80px;
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-
-    border-bottom: 4px solid #C96C99;
-    background: #FFF;
-    position: fixed;
-}
-
-h1 {
-    align-self: center;
-    color: #532C3E;
-
-    /* Header Style */
-    font-family: Jost;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-}
-

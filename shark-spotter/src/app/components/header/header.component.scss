@@ -2,12 +2,14 @@ ion-header {
     background-color: #F8D5E6;
     border-bottom: 4px solid #C76B97;
     box-shadow: none;
+    width: 100vw;
+    height: 15vh;
 }
 
 ion-title {
     margin: auto;
     text-align: center;
-    padding: 100px 0 5px;
+    padding: 5vh 0 0 0;
     font-weight: 600;
     font-size: 32px;
     color: #532C3E;
