@@ -15,6 +15,7 @@ import Icon from 'ol/style/Icon';
 import { MapMarkerComponent } from '../map-marker/map-marker.component';
 import { CommonModule } from '@angular/common'; 
 import type { Coordinate } from 'ol/coordinate';
+import { ReportService } from 'src/app/services/reports.service';
 
 
 
@@ -40,7 +41,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   private vectorSource = new VectorSource();
   private markerCount = 0;
   private tempCoords: Coordinate | null = null;
-  constructor() {}
+  constructor(private service:ReportService) {}
 
   ngOnInit() {}
 
@@ -136,6 +137,17 @@ export class MapComponent implements OnInit, AfterViewInit {
     marker.setId(this.markerCount);
     marker.set('id', this.markerCount);
 
+    let jsonObject = JSON.stringify({
+      'title': pinData.title,
+      'body': pinData.description,
+      'reportID': this.markerCount,
+      'longitude': 1,
+      'latitude': 1,
+      'location': 'N/A',
+      'type': pinData.selectedType,
+    });
+    this.insertReport(jsonObject);
+
     let iconSrc = '';
     switch (pinData.selectedType) {
       case 'FeminineProducts':
@@ -167,5 +179,10 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.tempCoords = null;
 }
 
+async insertReport(data: string) {
+
+  const resultJson = await this.service.addReport(JSON.parse(data));
+  console.log(resultJson);
+}
   
 }

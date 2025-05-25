@@ -32,6 +32,10 @@ export class ReportLogComponent  implements OnInit {
 
   constructor(private service:ReportService) { }
 
+  ionViewWillEnter() {
+    this.grabReports();
+  }
+
   async grabReports() {
     let resultJson;
     if(this.type == "personal") {
@@ -39,7 +43,7 @@ export class ReportLogComponent  implements OnInit {
     }
     else if(this.type == "community") {
       //TODO: retrieve reports in user's city
-      resultJson = await this.service.retrieveCommunityReports();
+      resultJson = await this.service.retrieveUserReports();
     }
     console.log(resultJson.report);
     resultJson.report.forEach((element: report) => {
