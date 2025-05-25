@@ -20,3 +20,7 @@
 
 <app-map-marker *ngIf="showMarkerCard" (close)="onMarkerCardClose()" 
   (save)="onPinSave($event)"></app-map-marker> 
+
+<div class="report-wrapper" *ngIf="showReport">
+  <app-summary-report-card *ngIf="showReport" (close)="onReportClose()"></app-summary-report-card>
+</div>

@@ -16,6 +16,7 @@ import { MapMarkerComponent } from '../map-marker/map-marker.component';
 import { CommonModule } from '@angular/common'; 
 import type { Coordinate } from 'ol/coordinate';
 import { ReportService } from 'src/app/services/reports.service';
+import { SummaryReportCardComponent } from '../summary-report-card/summary-report-card.component';
 
 
 
@@ -30,12 +31,14 @@ import { ReportService } from 'src/app/services/reports.service';
     IonToolbar,
     IonTitle,
     IonContent,
-    MapMarkerComponent
+    MapMarkerComponent,
+    SummaryReportCardComponent,
   ]
 })
 export class MapComponent implements OnInit, AfterViewInit {
   map!: Map;
   showMarkerCard = false;
+  showReport = false;
 
   // Declare vector source outside so it's accessible in the whole component
   private vectorSource = new VectorSource();
@@ -105,6 +108,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   if (feature) {
     console.log('Icon clicked!', feature);
     console.log('Marker', feature.getId());
+    this.showReport = true;
     // You could show a popup, open a card, etc.
   } else {
     console.log('Clicked on map but not on icon.');
@@ -121,6 +125,10 @@ export class MapComponent implements OnInit, AfterViewInit {
   // Used by the (close) output from <app-map-marker>
   onMarkerCardClose() {
     this.showMarkerCard = false;
+  }
+
+  onReportClose() {
+    this.showReport = false;
   }
 
   onPinSave(pinData: { title: string; description: string; selectedType: string }) {
