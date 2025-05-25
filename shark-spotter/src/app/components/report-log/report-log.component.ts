@@ -21,7 +21,7 @@ interface report {
   templateUrl: './report-log.component.html',
   styleUrls: ['./report-log.component.scss'],
   imports: [
-    IonTitle,
+    // IonTitle,
     CommonModule,
     SummaryReportCardComponent,
   ]
