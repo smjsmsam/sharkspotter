@@ -53,12 +53,14 @@ export class LoginCardComponent  implements OnInit {
   
   async goToHomePage() {
     try {
-      const userSession = await this.service.isLoggedIn();
-      console.log(userSession);
+      // const userSession = await this.service.isLoggedIn();
+      // console.log(userSession);
 
       const resultJson = await this.service.retrieveUser(this.username, this.password);
       if (resultJson.status == "success") {
         this.errorMsg = '';
+        this.username = '';
+        this.password = '';
         this.router.navigate(['/tabs/home']);
       } else {
         this.errorMsg = ':' + resultJson.errorMsg;
