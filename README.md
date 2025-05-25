@@ -8,7 +8,7 @@
 Shark Spotter is a web application that crowdsources safety and period-support data for users on the go! People are able to create their own personal accounts, posting to and creating a community of fellow users. On the map, users can place pins ranging from
 
 
-<div align="left" style="padding:20px";><img src="shark-spotter/src/assets/Shark_Period_Map_Noninverted.png" style="width:100px;" />feminine period products</div>
+<div align="left" style="padding-bottom:20px";><img src="shark-spotter/src/assets/Shark_Period_Map_Noninverted.png" style="width:100px;" />feminine period products</div>
 
 <div align="left"><img src="shark-spotter/src/assets/Shark_Toilet_Map_Noninverted.png" style="width:100px;" />bathrooms</div>
 
