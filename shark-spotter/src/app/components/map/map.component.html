@@ -26,5 +26,14 @@
       class="close-button" 
       (click)="onReportClose()">X    
     </ion-button>
-  <app-summary-report-card *ngIf="showReport" (close)="onReportClose()"></app-summary-report-card>
+    <app-summary-report-card 
+      *ngIf="showReport && selectedMarkerData"
+      [title]="selectedMarkerData.title"
+      [body]="selectedMarkerData.body"
+      [location]="selectedMarkerData.location"
+      [timestamp]="selectedMarkerData.timestamp"
+      [author]="selectedMarkerData.author"
+      [type]="selectedMarkerData.type"
+      (close)="onReportClose()">
+    </app-summary-report-card>
 </div>

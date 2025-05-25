@@ -40,6 +40,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   map!: Map;
   showMarkerCard = false;
   showReport = false;
+  selectedMarkerData: any = null;
 
   // Declare vector source outside so it's accessible in the whole component
   private vectorSource = new VectorSource();
@@ -108,10 +109,17 @@ export class MapComponent implements OnInit, AfterViewInit {
   const feature = this.map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
   if (feature) {
     console.log('Icon clicked!', feature);
-    console.log('Marker', feature.getId());
+    console.log('Marker', feature.get("id"));
     this.showReport = true;
     // You could show a popup, open a card, etc.
-    const markerData = this.getMarkerData(1);
+    //const markerData = this.getMarkerData(feature.get("id"));
+    this.getMarkerData(feature.get("id")).then(data => {
+      this.selectedMarkerData = data;
+      this.showReport = true;
+      console.log("BODYYYY:", this.selectedMarkerData.body)
+    });
+
+
   } else {
     console.log('Clicked on map but not on icon.');
   }
@@ -198,11 +206,23 @@ async insertReport(data: string) {
   const resultJson = await this.service.addReport(JSON.parse(data));
   console.log(resultJson);
 }
-
 async getMarkerData(markerID: number) {
   const markerData = await this.service.getMarker(markerID);
+
+  // Convert string timestamp to Date object
+  if (markerData?.timestamp) {
+    markerData.timestamp = new Date(markerData.timestamp);
+  }
+  if (markerData?.type === 'Bathroom' && markerData?.title === '') {
+    markerData.title = "Bathroom"
+  }
+  if (markerData?.type === 'FeminineProducts' && markerData?.title === '') {
+    markerData.title = "FeminineProducts"
+  }
+
   console.log(markerData);
   return markerData;
 }
+
   
 }
