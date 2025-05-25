@@ -3,7 +3,11 @@
     {{title}}
   </ion-card-title>
   <ion-text>
-    {{author}}
+    {{author}} ⋅ <span [ngStyle]="{
+      color: type === 'Incident' ? 'red' :
+            type === 'Bathroom' ? '#53C3F2' :
+            type === 'FeminineProducts' ? '#EB82B5' : 'black'
+    }">{{type}}</span>
   </ion-text>
   <ion-text>
     {{timestamp.toLocaleString('default', { month: 'long' })}} {{timestamp.getDate()}} at {{location}}

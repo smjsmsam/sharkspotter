@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   IonCard,
   IonCardTitle,
@@ -13,6 +14,7 @@ import {
     IonCard,
     IonCardTitle,
     IonText,
+    CommonModule,
   ]
 })
 export class SummaryReportCardComponent  implements OnInit {
