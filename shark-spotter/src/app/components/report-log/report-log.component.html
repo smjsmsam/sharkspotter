@@ -1,14 +1,32 @@
-<div class="container">
-  @if(reports) {
-    <div *ngFor="let rpt of reports">
-      <app-summary-report-card
-        [title]="rpt.title"
-        [body]="rpt.body"
-        [location]="rpt.location"
-        [timestamp]="rpt.timestamp"
-        [author]="rpt.author"
-        [type]="rpt.type">
-      </app-summary-report-card>
-    </div>
-  }
-</div>
+@if(type === "community") {
+  <div class="container" style="height: 83%;">
+    @if(reports) {
+      <div *ngFor="let rpt of reports">
+        <app-summary-report-card
+          [title]="rpt.title"
+          [body]="rpt.body"
+          [location]="rpt.location"
+          [timestamp]="rpt.timestamp"
+          [author]="rpt.author"
+          [type]="rpt.type">
+        </app-summary-report-card>
+      </div>
+    }
+  </div>
+}
+@if(type === "personal") {
+  <div class="container">
+    @if(reports) {
+      <div *ngFor="let rpt of reports">
+        <app-summary-report-card
+          [title]="rpt.title"
+          [body]="rpt.body"
+          [location]="rpt.location"
+          [timestamp]="rpt.timestamp"
+          [author]="rpt.author"
+          [type]="rpt.type">
+        </app-summary-report-card>
+      </div>
+    }
+  </div>
+}
