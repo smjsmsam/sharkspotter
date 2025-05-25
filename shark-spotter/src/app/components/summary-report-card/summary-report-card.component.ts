@@ -17,16 +17,18 @@ import {
 })
 export class SummaryReportCardComponent  implements OnInit {
   @Input() title!:string;
-  @Input() text!:string;
+  @Input() body!:string;
   @Input() location!:string;
-  @Input() time!:Date;
+  @Input() timestamp!:Date;
+  @Input() author!:string;
+  @Input() type!:string;
 
   constructor() { 
     if(!this.title) {
       this.title = "Report"
     }
-    if(!this.text) {
-      this.text = "No description";
+    if(!this.body) {
+      this.body = "No description";
     }
   }
 
