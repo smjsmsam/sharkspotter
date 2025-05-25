@@ -48,10 +48,9 @@ export class ReportLogComponent  implements OnInit {
     else if(this.type == "community") {
       //TODO: retrieve reports in user's city
       let resultArray = await this.service.retrieveCommunityReports();
-      console.log(reportArray);
-      resultArray.forEach((element: something) => {
-        console.log(element);
-        reportArray.push(element.report);
+      reportArray = {report: resultArray.allReports.map((entry: any) => entry.report)};
+      reportArray.report.forEach((element: report) => {
+        element.timestamp = new Date(element.timestamp);
       });
     }
     console.log(reportArray);

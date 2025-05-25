@@ -109,7 +109,7 @@ async function retrieveList(db, collection_name, user=null) {
         if (!user) {
             const allReports = await collection.find({}, {projection: {_id: 0, timestamp: 0}}).toArray();
             documents = {
-                report: allReports
+                allReports
             };
         } else {
             documents = await collection.findOne(

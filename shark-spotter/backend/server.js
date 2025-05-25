@@ -118,10 +118,8 @@ app.get('/api/retrieveCommunityReports', async (req, res) => {
   console.log("/retrieveCommunityReports");
   try {
     let result = await retrieveList(db, 'CommunityReports');
-    console.log(result);
     result.status = 'success';
     result.message = 'Successfully retrieved community reports.';
-    console.log(result);
     res.status(200).json(result);
   } catch (error) {
     console.log(error);
