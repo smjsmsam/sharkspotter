@@ -61,15 +61,30 @@ ion-card-title {
 
 
 .input-container {
-  background: white;
   padding-left: 10px;
   padding-bottom: 2px;
   border-radius: 20px;
   margin-bottom: 10px;
+  color: #878787;
+  background: white;
 }
 
-ion-textarea {
+ion-input.input-field {
+  --highlight-color: #BD457F;
+}
+
+ion-textarea.input-field {
   height: 100px;
+  --highlight-color: #BD457F;
+}
+
+ion-select {
+  --placeholder-color: #878787;
+  --placeholder-opacity: 1;
+}
+
+ion-select.ion-valid {
+  --highlight-color: #BD457F;
 }
 
 ion-select::part(icon) {
