@@ -49,6 +49,231 @@ export class ReportLogComponent  implements OnInit {
         latitude: 1234,
         longitude: 1234,
         user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
+      },
+      {
+        title: "hi",
+        text: "hi",
+        location: "Irvine, CA",
+        time: new Date(),
+        latitude: 1234,
+        longitude: 1234,
+        user: ""
       }
     ];
 
