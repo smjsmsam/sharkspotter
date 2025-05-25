@@ -99,8 +99,6 @@ async function insertResources(db, type, resource) {
    }
 }
 
-
-
 async function retrieveList(db, collection_name, user=null) {
     try {
         if (!db) {
@@ -109,7 +107,10 @@ async function retrieveList(db, collection_name, user=null) {
         const collection = db.collection(collection_name);
         let documents;
         if (!user) {
-            documents = await collection.find({}).toArray();
+            const allReports = await collection.find({}, {projection: {_id: 0, timestamp: 0}}).toArray();
+            documents = {
+                report: allReports
+            };
         } else {
             documents = await collection.findOne(
                 {username: user}, 
@@ -123,6 +124,24 @@ async function retrieveList(db, collection_name, user=null) {
         return {'status': 'error', 'message': 'Cannot retrieve ' + collection_name + ' at this time.'};
     }
 }
+
+async function getMarker(db, markerID) {
+    try {
+        if (!db) {
+            console.error('DB Not connected yet');
+        }
+        const marker = await db.collection("CommunityReports").findOne({"report.reportID": markerID});
+        if (marker.report) {
+            console.log(marker.report);
+            marker.report.status = 'success';
+        }
+        return marker.report;
+    } catch (error) {
+        console.error('Fetch error', error);
+        return {'status': 'error', 'message': 'Cannot retrieve markers at this time.'};
+    }
+}
+
 
 
 
@@ -145,12 +164,13 @@ async function execute() {
     //await insert(db, 'name lol', "email", "pass");
     //await retrieveList(db, 'login');
     //await update(db, 'email', "REPORT ADD LOL")
-    await retrieveList(db, 'CommunityReports'); 
+    // await retrieveList(db, 'CommunityReports'); 
     //await insertResources(db, 'bathroom', "bathroom place")
     // await addReport(db, 's1', jsonReport);
     // await addReport(db, 's1', jsonReport);
     // await addReport(db, 's1', jsonReport);
     // await retrieveList(db, 'login', 's1');
+    // await getMarker(db, 1);
 }
 
 
@@ -162,5 +182,6 @@ module.exports = {
     retrieveList,
     addReport,
     insertResources,
-    insertCommunityReport
+    insertCommunityReport,
+    getMarker
 }

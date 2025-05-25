@@ -111,6 +111,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     console.log('Marker', feature.getId());
     this.showReport = true;
     // You could show a popup, open a card, etc.
+    const markerData = this.getMarkerData(1);
   } else {
     console.log('Clicked on map but not on icon.');
   }
@@ -196,6 +197,12 @@ async insertReport(data: string) {
 
   const resultJson = await this.service.addReport(JSON.parse(data));
   console.log(resultJson);
+}
+
+async getMarkerData(markerID: number) {
+  const markerData = await this.service.getMarker(markerID);
+  console.log(markerData);
+  return markerData;
 }
   
 }

@@ -2,7 +2,7 @@
 require('./db_connect');  // Ensure this is required first to load the dotenv and MongoDB connection
 const express = require('express');
 const cors = require('cors');
-const { connect, insert, retrieveList, addReport, insertResources, insertCommunityReport } = require('./operations');
+const { connect, insert, retrieveList, addReport, getMarker, insertResources, insertCommunityReport} = require('./operations');
 const { verifyUser } = require('./login');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -160,5 +160,22 @@ app.post('/api/addReport', async (req, res) => {
     res.status(201).json({'status': 'success', 'message': response.message});
   } else {
     res.status(500).json({'status': 'error', 'message': response.message});
+  }
+});
+
+
+app.get('/api/getMarker', async (req, res) => {
+  console.log("/getMarker");
+  const { markerID } = req.query;
+
+  try {
+    let result = await getMarker(db, parseInt(markerID));
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    let err_msg = error;
+    err_msg.status = 'error';
+    err_msg.message = 'Failed to retrieve marker.';
+    res.status(500).json(err_msg);
   }
 });

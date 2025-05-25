@@ -16,6 +16,11 @@ interface report {
   type:string;
 }
 
+interface something {
+  report: report;
+  timestamp: Date;
+}
+
 @Component({
   selector: 'app-report-log',
   templateUrl: './report-log.component.html',
@@ -33,20 +38,24 @@ export class ReportLogComponent  implements OnInit {
   constructor(private service:ReportService) { }
 
   async grabReports() {
-    let resultJson;
+    let reportArray;
     if(this.type == "personal") {
-      resultJson = await this.service.retrieveUserReports();
+      reportArray = await this.service.retrieveUserReports();
+      reportArray.report.forEach((element: report) => {
+        element.timestamp = new Date(element.timestamp);
+      });
     }
     else if(this.type == "community") {
       //TODO: retrieve reports in user's city
-      resultJson = await this.service.retrieveUserReports();
+      let resultArray = await this.service.retrieveCommunityReports();
+      console.log(reportArray);
+      resultArray.forEach((element: something) => {
+        console.log(element);
+        reportArray.push(element.report);
+      });
     }
-    console.log(resultJson.report);
-    resultJson.report.forEach((element: report) => {
-      element.timestamp = new Date(element.timestamp);
-    });
-    console.log(resultJson.report);
-    this.reports = resultJson.report;
+    console.log(reportArray);
+    this.reports = reportArray.report;
   }
 
   ngOnInit() {
