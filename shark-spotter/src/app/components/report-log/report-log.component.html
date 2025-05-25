@@ -3,9 +3,11 @@
     <div *ngFor="let rpt of reports">
       <app-summary-report-card
         [title]="rpt.title"
-        [text]="rpt.text"
+        [body]="rpt.body"
         [location]="rpt.location"
-        [time]="rpt.time">
+        [timestamp]="rpt.timestamp"
+        [author]="rpt.author"
+        [type]="rpt.type">
       </app-summary-report-card>
     </div>
   }

@@ -2,15 +2,18 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonTitle } from '@ionic/angular/standalone';
 import { SummaryReportCardComponent } from '../summary-report-card/summary-report-card.component';
+import { ReportService } from 'src/app/services/reports.service';
 
 interface report {
   title:string;
-  text:string;
+  body:string;
   location:string;
-  time:Date;
+  timestamp:Date;
   longitude:number;
   latitude:number;
-  user:string;
+  author:string;
+  reportID:number;
+  type:string;
 }
 
 @Component({
@@ -27,263 +30,47 @@ export class ReportLogComponent  implements OnInit {
   @Input() type!:string;
   reports:report[] = [];
 
-  constructor() { }
+  constructor(private service:ReportService) { }
 
-  ngOnInit() {
-    //delete this
-    this.reports = [
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      },
-      {
-        title: "hi",
-        text: "hi",
-        location: "Irvine, CA",
-        time: new Date(),
-        latitude: 1234,
-        longitude: 1234,
-        user: ""
-      }
-    ];
-
-
+  async grabReports() {
+    let resultJson;
     if(this.type == "personal") {
-      //TODO: retrieve user's reports
+      resultJson = await this.service.retrieveUserReports();
     }
     else if(this.type == "community") {
       //TODO: retrieve reports in user's city
+      resultJson = await this.service.retrieveCommunityReports();
     }
+    console.log(resultJson.report);
+    resultJson.report.forEach((element: report) => {
+      element.timestamp = new Date(element.timestamp);
+    });
+    console.log(resultJson.report);
+    this.reports = resultJson.report;
+  }
+
+  ngOnInit() {
+    this.grabReports();
+    // this.reports = [
+    //   {
+    //     title: "hi",
+    //     text: "hi",
+    //     location: "Irvine, CA",
+    //     time: new Date(),
+    //     latitude: 1234,
+    //     longitude: 1234,
+    //     user: ""
+    //   },
+    //   {
+    //     title: "hi",
+    //     text: "hi",
+    //     location: "Irvine, CA",
+    //     time: new Date(),
+    //     latitude: 1234,
+    //     longitude: 1234,
+    //     user: ""
+    //   }
+    // ];
   }
 
 }

@@ -35,19 +35,21 @@ async function insert(db, username, password) {
 
 
 
-async function update(db, username, new_report) { // update personal report and then add to community reports
+async function addReport(db, username, new_report) { // update personal report and then add to community reports
     try {
         if (!db) {
             console.error('DB Not connected yet')
+            return {'status': 'error', 'message': 'Database not connected.'}; 
         }
         const reports = db.collection("login");
         await reports.updateOne(
             {username: username,}, // find
-            {$push: {report: new_report} } // update the value in that set
+            {$push: {report: new_report}} // update the value in that set
         );
-        const community_reports = db.collection("CommunityReports");
+        console.log("Inserted user report");
         await insertCommunityReport(db, new_report);
-        console.log('Updated');
+        console.log('Inserted community report');
+        return {'status': 'success', 'message': 'Successfully added report.'};
     }
     catch (error) {
         console.error('Update error', error);
@@ -99,20 +101,44 @@ async function insertResources(db, type, resource) {
 
 
 
-async function retrieveList(db, collection_name) {
+async function retrieveList(db, collection_name, user=null) {
     try {
         if (!db) {
             console.error('DB Not connected yet');
         }
         const collection = db.collection(collection_name);
-        const documents = await collection.find({}).toArray();
+        let documents;
+        if (!user) {
+            documents = await collection.find({}).toArray();
+        } else {
+            documents = await collection.findOne(
+                {username: user}, 
+                {projection: {_id: 0, report: 1, type: 1}},
+            );
+        }
         console.log('Documents:', documents);
         return documents;
     } catch (error) {
         console.error('Fetch error', error);
+        return {'status': 'error', 'message': 'Cannot retrieve ' + collection_name + ' at this time.'};
     }
 }
 
+
+
+// example
+let user = {'username': 's1'};
+const jsonReport = {
+    'title': 'crime 1',
+    'body': 'this is a crime of 1.',
+    'author': user.username,
+    'reportID': '123',
+    'longitude': '1234',
+    'latitude': '5678',
+    'location': 'Irvine, CA',
+    'timestamp': new Date(),
+    'type': 'crime',
+}
 
 async function execute() {
     const db = await connect();
@@ -121,7 +147,8 @@ async function execute() {
     //await update(db, 'email', "REPORT ADD LOL")
     //await retrieveList(db, 'CommunityReports');
     //await insertResources(db, 'bathroom', "bathroom place")
-    await retrieveList(db, 'Resources');
+    // await addReport(db, 'name', jsonReport);
+    // await retrieveList(db, 'login', 'name');
 }
 
 
@@ -131,7 +158,7 @@ module.exports = {
     connect,
     insert,
     retrieveList,
-    update,
+    addReport,
     insertResources,
     insertCommunityReport
 }

@@ -3,10 +3,13 @@
     {{title}}
   </ion-card-title>
   <ion-text>
-    {{time.toLocaleString('default', { month: 'long' })}} {{time.getDate()}} at {{location}}
+    {{author}}
+  </ion-text>
+  <ion-text>
+    {{timestamp.toLocaleString('default', { month: 'long' })}} {{timestamp.getDate()}} at {{location}}
   </ion-text>
   <br />
   <ion-text>
-    {{text}}
+    {{body}}
   </ion-text>
 </ion-card>
