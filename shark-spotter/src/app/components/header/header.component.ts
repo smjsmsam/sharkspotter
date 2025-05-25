@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   IonHeader,
   IonTitle,
@@ -11,6 +12,7 @@ import {
   imports: [
     IonHeader,
     IonTitle,
+    CommonModule
   ]
 })
 export class HeaderComponent  implements OnInit {

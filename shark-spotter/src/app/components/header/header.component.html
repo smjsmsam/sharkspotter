@@ -1,3 +1,6 @@
-<ion-header>
+<ion-header *ngIf="text === 'Community Forum';" style="background-color: white;">
+  <ion-title>{{text}}</ion-title>
+</ion-header>
+<ion-header *ngIf="text !== 'Community Forum';">
   <ion-title>{{text}}</ion-title>
 </ion-header>
