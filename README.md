@@ -12,7 +12,7 @@ Shark Spotter is a web application that crowdsources safety and period-support d
 
 <div align="left"><img src="shark-spotter/src/assets/Shark_Toilet_Map_Noninverted.png" style="width:100px;" />bathrooms</div>
 
-<div align="left"><img src="shark-spotter/src/assets/Shark_Incident_Map_Noninverted.png" style="width:100px;" />and incidents to be aware of! </div>
+<div align="left"><img src="shark-spotter/src/assets/Shark_Incident_Map_Noninverted.png" style="width:100px;" />and incidents to be aware of! /n</div>
 
 
 Through these available resources and information from users on dangers to look out for, females can create a safe place and support one another! A web application by women, for women.
