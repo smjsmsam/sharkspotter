@@ -25,7 +25,20 @@ export class SummaryReportCardComponent  implements OnInit {
 
   constructor() { 
     if(!this.title) {
-      this.title = "Report"
+      switch (this.type) {
+        case "incident":
+          this.title = "Report";
+          break;
+        case "feminineproducts":
+          this.title = "Feminine Products";
+          break;
+        case "bathroom":
+          this.title = "Bathroom";
+          break;
+        default:
+          this.title = "Unknown";
+          break;
+      }
     }
     if(!this.body) {
       this.body = "No description";
