@@ -20,7 +20,6 @@ export class ReportService {
     }
 
     public async addReport(report: JSON): Promise<any> {
-      // report should have: title, body, reportID, location, type
       const response = await firstValueFrom(this.http.post('http://localhost:3000/api/addReport', report));
       return response;
     }

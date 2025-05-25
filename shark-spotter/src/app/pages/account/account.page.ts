@@ -51,7 +51,7 @@ async logout() {
 
   ionViewWillEnter() {
     if (this.reportLog) {
-      this.reportLog.grabReports(); // ✅ runs every time this page is navigated to
+      this.reportLog.grabReports();
     }
   }
 }
