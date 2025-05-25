@@ -126,6 +126,9 @@ export class MapComponent implements OnInit, AfterViewInit {
   onPinSave(pinData: { title: string; description: string; selectedType: string }) {
     if (!this.tempCoords) return;
     if (!pinData.selectedType) return;
+    if (pinData.selectedType === 'Incident' && !pinData.title) return;
+    if (pinData.selectedType === 'Incident' && !pinData.description) return;
+
     console.log('HELPPP');
     this.markerCount++;
     const marker = new Feature({
