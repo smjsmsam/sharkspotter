@@ -36,7 +36,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   // Declare vector source outside so it's accessible in the whole component
   private vectorSource = new VectorSource();
-
+  private markerCount = 0;
   constructor() {}
 
   ngOnInit() {}
@@ -79,19 +79,24 @@ export class MapComponent implements OnInit, AfterViewInit {
   });
 
   this.map.on('dblclick', (event) => {
+    this.markerCount++;
     const marker = new Feature({
       geometry: new Point(event.coordinate),
     });
+    marker.setId(this.markerCount);
+    marker.set('id', this.markerCount);
     this.vectorSource.addFeature(marker);
     console.log('Marker added at:', event.coordinate);
     this.showMarkerCard = true
   });
 
+
+  
   this.map.on('click', (event) => {
   const feature = this.map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
   if (feature) {
     console.log('Icon clicked!', feature);
-    console.log('Pixels', event.pixel);
+    console.log('Marker', feature.getId());
     // You could show a popup, open a card, etc.
   } else {
     console.log('Clicked on map but not on icon.');
