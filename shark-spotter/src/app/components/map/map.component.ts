@@ -86,6 +86,18 @@ export class MapComponent implements OnInit, AfterViewInit {
     console.log('Marker added at:', event.coordinate);
     this.showMarkerCard = true
   });
+
+  this.map.on('click', (event) => {
+  const feature = this.map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
+  if (feature) {
+    console.log('Icon clicked!', feature);
+    console.log('Pixels', event.pixel);
+    // You could show a popup, open a card, etc.
+  } else {
+    console.log('Clicked on map but not on icon.');
+  }
+});
+
 }
 
 // Optional: manual close
@@ -98,4 +110,5 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.showMarkerCard = false;
   }
 
+  
 }
