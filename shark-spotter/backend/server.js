@@ -52,6 +52,10 @@ app.listen(port, () => {
 app.post('/api/verifyUser', async (req, res) => {
   console.log("/verifyUser");
   const { username, password } = req.body;
+  if (username.trim() == '' || password.trim() == '') {
+    res.status(500).json({ 'status': 'error', 'message': 'Cannot sign in with an empty username or password.' });
+    return;
+  }
   try {
     result = await verifyUser(db, username, password);
     if (result.status == 'success') {
@@ -70,6 +74,10 @@ app.post('/api/verifyUser', async (req, res) => {
 app.post('/api/insertUser', async (req, res) => {
   console.log("/insertUser");
   const { username, password } = req.body;
+  if (username.trim() == '' || password.trim() == '') {
+    res.status(500).json({ 'status': 'error', 'message': 'Cannot create a user with an empty username or password.' });
+    return;
+  }
   try {
     result = await insert(db, username, password);
     if (result.status == 'success') {
