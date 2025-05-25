@@ -83,3 +83,10 @@ ion-button {
     --background: #EB82B5;
     --box-shadow: 0px 4px 0px 0px #BD457F;
 }
+
+#errorMessage {
+    color: red;
+    margin-top: 10px;
+    font-family: 'Jost';
+    font-style: italic;
+}

@@ -42,7 +42,7 @@
       (click)="goToHomePage()">
       Continue
     </ion-button>
-    <div *ngIf="errorMsg" style="color: red; margin-top: 10px;">
+    <div *ngIf="errorMsg" id="errorMessage">
       {{ errorMsg }}
     </div>
   </ion-card>
