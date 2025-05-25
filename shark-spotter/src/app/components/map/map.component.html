@@ -22,5 +22,9 @@
   (save)="onPinSave($event)"></app-map-marker> 
 
 <div class="report-wrapper" *ngIf="showReport">
+  <ion-button 
+      class="close-button" 
+      (click)="onReportClose()">X    
+    </ion-button>
   <app-summary-report-card *ngIf="showReport" (close)="onReportClose()"></app-summary-report-card>
 </div>

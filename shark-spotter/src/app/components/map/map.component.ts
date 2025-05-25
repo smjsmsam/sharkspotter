@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { IonSearchbar, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonSearchbar, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
@@ -33,6 +33,7 @@ import { SummaryReportCardComponent } from '../summary-report-card/summary-repor
     IonContent,
     MapMarkerComponent,
     SummaryReportCardComponent,
+    IonButton
   ]
 })
 export class MapComponent implements OnInit, AfterViewInit {
@@ -130,6 +131,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   onReportClose() {
     this.showReport = false;
   }
+
 
   onPinSave(pinData: { title: string; description: string; selectedType: string }) {
     if (!this.tempCoords) return;
