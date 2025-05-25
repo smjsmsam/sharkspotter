@@ -2,7 +2,7 @@
 require('./db_connect');  // Ensure this is required first to load the dotenv and MongoDB connection
 const express = require('express');
 const cors = require('cors');
-const { connect, insert, retrieveList, update, insertResources, insertCommunityReport } = require('./operations');
+const { connect, insert, retrieveList, addReport, insertResources, insertCommunityReport } = require('./operations');
 const { verifyUser } = require('./login');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -111,4 +111,52 @@ app.post('/api/userLogout', async (req, res) => {
   console.log("/userLogout");
   user = {'username': ''};
   res.status(201).json({'status': 'success', 'message': 'Succesfully logged out.'});
+});
+
+
+app.get('/api/retrieveCommunityReports', async (req, res) => {
+  console.log("/retrieveCommunityReports");
+  try {
+    let result = await retrieveList(db, 'CommunityReports');
+    result.status = 'success';
+    result.message = 'Successfully retrieved community reports.';
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    let err_msg = error;
+    err_msg.status = 'error';
+    err_msg.message = 'Failed to retrieve community reports.';
+    res.status(500).json(err_msg);
+  }
+});
+
+
+app.get('/api/retrieveUserReports', async (req, res) => {
+  console.log("/retrieveUserReports");
+  try {
+    let result = await retrieveList(db, 'login', user.username);
+    result.status = 'success';
+    result.message = 'Successfully retrieved user reports.';
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    let err_msg = error;
+    err_msg.status = 'error';
+    err_msg.message = 'Failed to retrieve user reports.';
+    res.status(500).json(err_msg);
+  }
+});
+
+app.post('/api/addReport', async (req, res) => {
+  console.log("/addReport");
+  if (user.username == ''){res.status(500).json({'status': 'error', 'message': response.message});}
+  const params = req.body;
+  params.author = user.username;
+  params.timestamp = new Date();
+  let response = await addReport(db, user.username, params);
+  if (response.status == 'success') {
+    res.status(201).json({'status': 'success', 'message': response.message});
+  } else {
+    res.status(500).json({'status': 'error', 'message': response.message});
+  }
 });
