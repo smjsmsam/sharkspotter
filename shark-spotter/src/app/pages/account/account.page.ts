@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 
@@ -29,6 +29,7 @@ export class AccountPage implements OnInit {
   //TODO
   username = "Username here :)"
   ;
+  @ViewChild(ReportLogComponent) reportLog!: ReportLogComponent;
 
   constructor(private router: Router, private service:LoginService) { }
 
@@ -48,4 +49,9 @@ async logout() {
     this.replaceUsername();
   }
 
+  ionViewWillEnter() {
+    if (this.reportLog) {
+      this.reportLog.grabReports(); // ✅ runs every time this page is navigated to
+    }
+  }
 }

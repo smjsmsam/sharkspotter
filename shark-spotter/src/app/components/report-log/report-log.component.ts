@@ -32,10 +32,6 @@ export class ReportLogComponent  implements OnInit {
 
   constructor(private service:ReportService) { }
 
-  ionViewWillEnter() {
-    this.grabReports();
-  }
-
   async grabReports() {
     let resultJson;
     if(this.type == "personal") {
@@ -55,26 +51,6 @@ export class ReportLogComponent  implements OnInit {
 
   ngOnInit() {
     this.grabReports();
-    // this.reports = [
-    //   {
-    //     title: "hi",
-    //     text: "hi",
-    //     location: "Irvine, CA",
-    //     time: new Date(),
-    //     latitude: 1234,
-    //     longitude: 1234,
-    //     user: ""
-    //   },
-    //   {
-    //     title: "hi",
-    //     text: "hi",
-    //     location: "Irvine, CA",
-    //     time: new Date(),
-    //     latitude: 1234,
-    //     longitude: 1234,
-    //     user: ""
-    //   }
-    // ];
   }
 
 }
