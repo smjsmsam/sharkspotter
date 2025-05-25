@@ -116,7 +116,7 @@ async function retrieveList(db, collection_name, user=null) {
                 {projection: {_id: 0, report: 1, type: 1}},
             );
         }
-        console.log('Documents:', documents);
+        // console.log('Documents:', documents);
         return documents;
     } catch (error) {
         console.error('Fetch error', error);
@@ -145,14 +145,16 @@ async function execute() {
     //await insert(db, 'name lol', "email", "pass");
     //await retrieveList(db, 'login');
     //await update(db, 'email', "REPORT ADD LOL")
-    //await retrieveList(db, 'CommunityReports');
+    await retrieveList(db, 'CommunityReports'); 
     //await insertResources(db, 'bathroom', "bathroom place")
-    // await addReport(db, 'name', jsonReport);
-    // await retrieveList(db, 'login', 'name');
+    // await addReport(db, 's1', jsonReport);
+    // await addReport(db, 's1', jsonReport);
+    // await addReport(db, 's1', jsonReport);
+    // await retrieveList(db, 'login', 's1');
 }
 
 
-execute();
+// execute();
 //updateMany, deleteone, replaceOne
 module.exports = {
     connect,
