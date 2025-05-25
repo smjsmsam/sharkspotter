@@ -1,6 +1,6 @@
 # sharkspotter
 
-<div align="center"><img src="shark-spotter/src/assets/Shark Pattern BG.png"/></div>
+<div align="center"><img src="shark-spotter/src/assets/SharkSpotterThumbnail.png"/></div>
 
 
 ## Hello, welcome to our Venus Hacks 2025 Project!
