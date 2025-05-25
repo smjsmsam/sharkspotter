@@ -52,6 +52,7 @@ async logout() {
   ionViewWillEnter() {
     if (this.reportLog) {
       this.reportLog.grabReports();
+      this.replaceUsername();
     }
   }
 }

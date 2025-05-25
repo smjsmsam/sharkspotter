@@ -142,7 +142,13 @@ async function getMarker(db, markerID) {
     }
 }
 
+async function clearCommunity(db) {
 
+}
+
+async function clearUsers(db) {
+
+}
 
 
 // example
