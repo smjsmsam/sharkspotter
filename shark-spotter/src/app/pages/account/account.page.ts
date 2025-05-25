@@ -18,9 +18,9 @@ import { ReportLogComponent } from 'src/app/components/report-log/report-log.com
   standalone: true,
   imports: [
     IonButton,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
+    // IonHeader,
+    // IonToolbar,
+    // IonTitle,
     HeaderComponent,
     ReportLogComponent,
   ]
