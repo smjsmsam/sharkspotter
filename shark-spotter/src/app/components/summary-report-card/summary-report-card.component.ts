@@ -45,6 +45,9 @@ export class SummaryReportCardComponent  implements OnInit {
     if(!this.body) {
       this.body = "No description";
     }
+    if(this.location === 'N/A' || this.location === '' || this.location === undefined || !this.location) {
+      this.location = "Irvine, CA";
+    }
   }
 
 }
