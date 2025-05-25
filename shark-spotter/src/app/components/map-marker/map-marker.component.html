@@ -1,44 +1,62 @@
-
+<div class="container">
   <div class="card-container slide-in">
-  <ion-card>
-    <ion-button 
-      class="close-button" 
-      (click)="onCloseClick()">X    
-    </ion-button>
-    <ion-card-header>
-      <ion-card-title>Add a pin! 📌</ion-card-title>
-    </ion-card-header>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Add a pin! 📌</ion-card-title>
+      </ion-card-header>
 
-    <ion-card-content>
-      
-      <ion-input class="input-field"
-          label="Title" 
-          labelPlacement="floating"
-          placeholder="Enter title"
-          [(ngModel)]="title">
-        </ion-input>
-        <ion-select placeholder="Select pin type 📍" [(ngModel)]="selectedType" (ionChange)="onSelectChange($event)">
-          <ion-select-option value="FeminineProducts">Feminine Products ♀️</ion-select-option>
-          <ion-select-option value="Bathroom">Bathroom 🚽</ion-select-option>
-          <ion-select-option value="Incident">Incident 🚨</ion-select-option>
-        </ion-select>
+      <ion-card-content>
+        <div class="input-container">
+          <ion-input class="input-field"
+            label="Title" 
+            labelPlacement="floating"
+            placeholder="Enter title"
+            [(ngModel)]="title">
+          </ion-input>
+        </div>
+        
+        <div class="input-container">
+          <ion-select
+            placeholder="Select pin type 📍"
+            [(ngModel)]="selectedType"
+            (ionChange)="onSelectChange($event)">
+            <ion-select-option
+              value="FeminineProducts">
+              Feminine Products ♀️
+            </ion-select-option>
+            <ion-select-option
+              value="Bathroom">
+              Bathroom 🚽
+            </ion-select-option>
+            <ion-select-option
+              value="Incident">
+              Incident 🚨
+            </ion-select-option>
+          </ion-select>
+        </div>
 
-        <ion-textarea
-          class="input-field"
-          label="Description"
-          labelPlacement="floating"
-          placeholder="Enter description"
-          [(ngModel)]="description"
-        ></ion-textarea>
-
-      <!-- <ion-card-header class="card-header-with-close">
-    
-      </ion-card-header> -->
-      
-    </ion-card-content>
-      <ion-button 
-        class="save-button" 
-        (click)="onSaveClick()">Save    
-      </ion-button>
-  </ion-card>
+        <div class="input-container">
+          <ion-textarea
+            class="input-field"
+            label="Description"
+            labelPlacement="floating"
+            placeholder="Enter description"
+            [(ngModel)]="description">
+          </ion-textarea>
+        </div>
+          
+      </ion-card-content>
+      <div class="button-container">
+        <ion-button 
+          class="close-button" 
+          (click)="onCloseClick()">
+          Cancel
+        </ion-button>
+        <ion-button 
+          class="save-button" 
+          (click)="onSaveClick()">Save    
+        </ion-button>
+      </div>
+    </ion-card>
   </div>
+</div>

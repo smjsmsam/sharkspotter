@@ -1,99 +1,78 @@
+.container {
+  position: absolute;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
 
 ion-card {
-    display: grid;
-    position: absolute;
-    justify-content: center;
-    padding: 10px;
-    width:300px;
-    text-wrap: 0;
-    background-color: #F8D5E6;
-    border: 3px solid #C76B97;
-    border-radius: 20px;
-    box-shadow: 0px 4px 0px 0px #BD457F;
+  padding: 10px;
+  width: 300px;
+  text-wrap: 0;
+  background-color: #F8D5E6;
+  border: 3px solid #C76B97;
+  border-radius: 20px;
+  box-shadow: 0px 4px 0px 0px #BD457F;
 }
+
 .card-container {
-  position: absolute;
-  top: 30%;
-  left: 40%;
   width: 60%;
-  height:5%;
-  transform: translate(-50%, -50%);
   animation: slideInFromBottom 0.5s ease-out forwards;
 }
 
 @keyframes slideInFromBottom {
   0% {
-    transform: translate(-50%, 100%);
+    transform: translateY(100%);
     opacity: 0;
   }
   100% {
-    transform: translate(-50%, -50%);
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
-.close-button {
-    border-radius: 50%;
-    width: 5px;
-    height:5px;
-    box-shadow: 0%;
-    width: 40px;
+.button-container {
+  display: flex;
+  justify-content: right;
+  align-items: right;
 }
-
-
-.save-button {
-    position:relative;
-    border-radius: 50%;
-    height:5px;
-    box-shadow: 0%;
-    width: 200px;
-    left: 16px;
-    height: 35px;
-    font-size: 15px;
-    padding: 0px;
-    margin-bottom: 20px;
-}
-
-
 
 ion-button {
-    position: absolute;
-    font-size: 8px;
-    --background: #dd418d;
-    --box-shadow: none;
-    z-index: 1000;
-    right: 5px;
-    top: 0px;
-}
-
-ion-card-subtitle {
-  text-transform: none;
+  border-radius: 50%;
   font-size: 15px;
+  padding: 0 10px 0 0;
+  margin-bottom: 10px;
 }
 
+.close-button {
+  --background: #989898;
+  --box-shadow: 0px 4px 0px 0px #767676;
+}
 
 ion-card-title {
   text-transform: none;
-  font-size: 20px;
+  text-align: center;
+  font-size: 26px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+
+.input-container {
+  background: white;
+  padding-left: 10px;
+  padding-bottom: 2px;
+  border-radius: 20px;
+  margin-bottom: 10px;
 }
 
 ion-textarea {
-    border: 1px;
-    background-color:white;
-    border-radius: 10px;
-    height: 100px;
+  height: 100px;
 }
 
-
-ion-input {
-    background: white;
-    padding: 100px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-}
-
-ion-select {
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 25px;
+ion-select::part(icon) {
+  position: absolute;
+  right: 5%;
 }

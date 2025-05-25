@@ -1,5 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { IonSearchbar, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/angular/standalone';
+import {
+  IonHeader,
+  IonToolbar, 
+  IonTitle, 
+  IonContent, 
+  IonButton 
+} from '@ionic/angular/standalone';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
@@ -26,7 +32,6 @@ import { SummaryReportCardComponent } from '../summary-report-card/summary-repor
   styleUrls: ['./map.component.scss'],
   imports: [
     CommonModule,
-    IonSearchbar,
     IonHeader,
     IonToolbar,
     IonTitle,

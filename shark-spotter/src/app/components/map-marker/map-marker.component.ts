@@ -6,13 +6,11 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
-  IonCardSubtitle,
   IonInput,
   IonTextarea,
   IonSelect,
   IonSelectOption
 } from '@ionic/angular/standalone';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -27,7 +25,6 @@ import { FormsModule } from '@angular/forms';
     IonCardContent,
     IonCardHeader,
     IonCardTitle,
-    IonCardSubtitle,
     IonInput,
     IonTextarea,
     IonSelect,
