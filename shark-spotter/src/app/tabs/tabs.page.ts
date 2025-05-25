@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
     IonTabs, 
     IonTabBar,
     IonTabButton, 
-    IonIcon,
+    // IonIcon,
   ]
 })
 export class TabsPage {

@@ -23,16 +23,18 @@ export class SummaryReportCardComponent  implements OnInit {
   @Input() author!:string;
   @Input() type!:string;
 
-  constructor() { 
-    if(!this.title) {
+  constructor() {}
+
+  ngOnInit() {
+    if(this.title === '' || this.title === undefined || !this.title) {
       switch (this.type) {
-        case "incident":
+        case "Incident":
           this.title = "Report";
           break;
-        case "feminineproducts":
+        case "FeminineProducts":
           this.title = "Feminine Products";
           break;
-        case "bathroom":
+        case "Bathroom":
           this.title = "Bathroom";
           break;
         default:
@@ -44,7 +46,5 @@ export class SummaryReportCardComponent  implements OnInit {
       this.body = "No description";
     }
   }
-
-  ngOnInit() {}
 
 }
