@@ -18,4 +18,5 @@
   <!-- <div id="pink-overlay"></div> -->
 </div>
 
-<app-map-marker *ngIf="showMarkerCard" (close)="onMarkerCardClose()"></app-map-marker> 
+<app-map-marker *ngIf="showMarkerCard" (close)="onMarkerCardClose()" 
+  (save)="onPinSave($event)"></app-map-marker> 

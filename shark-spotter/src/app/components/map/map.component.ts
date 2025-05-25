@@ -14,6 +14,8 @@ import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 import { MapMarkerComponent } from '../map-marker/map-marker.component';
 import { CommonModule } from '@angular/common'; 
+import type { Coordinate } from 'ol/coordinate';
+
 
 
 @Component({
@@ -37,6 +39,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   // Declare vector source outside so it's accessible in the whole component
   private vectorSource = new VectorSource();
   private markerCount = 0;
+  private tempCoords: Coordinate | null = null;
   constructor() {}
 
   ngOnInit() {}
@@ -79,19 +82,23 @@ export class MapComponent implements OnInit, AfterViewInit {
   });
 
   this.map.on('dblclick', (event) => {
-    this.markerCount++;
-    const marker = new Feature({
-      geometry: new Point(event.coordinate),
-    });
-    marker.setId(this.markerCount);
-    marker.set('id', this.markerCount);
-    this.vectorSource.addFeature(marker);
-    console.log('Marker added at:', event.coordinate);
-    this.showMarkerCard = true
+    this.showMarkerCard = true;
+    this.tempCoords = event.coordinate;
+  // this.markerCount++;
+  //   const marker = new Feature({
+  //     geometry: new Point(event.coordinate),
+  //   });
+  //   marker.setId(this.markerCount);
+  //   marker.set('id', this.markerCount);
+  //   this.vectorSource.addFeature(marker);
+  //   console.log('Marker added at:', event.coordinate);
+    
   });
 
-
   
+
+
+
   this.map.on('click', (event) => {
   const feature = this.map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
   if (feature) {
@@ -114,6 +121,51 @@ export class MapComponent implements OnInit, AfterViewInit {
   onMarkerCardClose() {
     this.showMarkerCard = false;
   }
+
+  onPinSave(pinData: { title: string; description: string; selectedType: string }) {
+    if (!this.tempCoords) return;
+    if (!pinData.selectedType) return;
+    console.log('HELPPP');
+    this.markerCount++;
+    const marker = new Feature({
+      geometry: new Point(this.tempCoords),
+      title: pinData.title,
+      description: pinData.description,
+      pinType: pinData.selectedType,
+    });
+    marker.setId(this.markerCount);
+    marker.set('id', this.markerCount);
+
+    let iconSrc = '';
+    switch (pinData.selectedType) {
+      case 'FeminineProducts':
+        iconSrc = 'assets/Shark_Period_Map.png';
+        break;
+      case 'Bathroom':
+        iconSrc = 'assets/Shark_Toilet_Map.png';
+        break;
+      case 'Incident':
+        iconSrc = 'assets/Shark_Incident_Map.png';
+        break;
+      default:
+        iconSrc = 'assets/Shark_Period_Map.png';
+    }
+
+    marker.setStyle(
+      new Style({
+        image: new Icon({
+          anchor: [0.5, 1],
+          src: iconSrc,
+          scale: 0.03,
+        }),
+      })
+    );
+
+    this.vectorSource.addFeature(marker);
+
+    this.showMarkerCard = false;
+    this.tempCoords = null;
+}
 
   
 }

@@ -1,23 +1,44 @@
 
   <div class="card-container slide-in">
   <ion-card>
+    <ion-button 
+      class="close-button" 
+      (click)="onCloseClick()">X    
+    </ion-button>
     <ion-card-header>
-      <ion-card-subtitle>Sign Up or Log In</ion-card-subtitle>
+      <ion-card-title>Add a pin! 📌</ion-card-title>
     </ion-card-header>
 
-    <ion-card-content> hi
-      <ion-card-header class="card-header-with-close">
-    <ion-card-subtitle>Sign Up or Log In</ion-card-subtitle>
-    <ion-button 
-      fill="clear" 
-      size="small" 
-      color="medium" 
-      class="close-button" 
-      (click)="onCloseClick()">
-    </ion-button>
-  </ion-card-header>
+    <ion-card-content>
+      
+      <ion-input class="input-field"
+          label="Title" 
+          labelPlacement="floating"
+          placeholder="Enter title"
+          [(ngModel)]="title">
+        </ion-input>
+        <ion-select placeholder="Select pin type 📍" [(ngModel)]="selectedType" (ionChange)="onSelectChange($event)">
+          <ion-select-option value="FeminineProducts">Feminine Products ♀️</ion-select-option>
+          <ion-select-option value="Bathroom">Bathroom 🚽</ion-select-option>
+          <ion-select-option value="Incident">Incident 🚨</ion-select-option>
+        </ion-select>
+
+        <ion-textarea
+          class="input-field"
+          label="Description"
+          labelPlacement="floating"
+          placeholder="Enter description"
+          [(ngModel)]="description"
+        ></ion-textarea>
+
+      <!-- <ion-card-header class="card-header-with-close">
+    
+      </ion-card-header> -->
       
     </ion-card-content>
-
+      <ion-button 
+        class="save-button" 
+        (click)="onSaveClick()">Save    
+      </ion-button>
   </ion-card>
   </div>
