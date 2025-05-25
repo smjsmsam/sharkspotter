@@ -15,4 +15,5 @@ Shark Spotter is a web application that crowdsources safety and period-support d
 
 Through these available resources and information from users on dangers to look out for, females can create a safe place and support one another! A web application by women, for women.
 
+### Run SharkSpotter
 To run SharkSpotter, cd into the backend folder and run "node server.js". In a separate terminal in the shark-spotter folder, run "ionic serve".
