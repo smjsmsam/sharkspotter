@@ -47,3 +47,10 @@ ion-content, .ion-content {
     opacity: 1;
   }
 }
+
+.close-button {
+  position: absolute;
+  right: 5%;
+  top: 30%;
+  z-index: 10;
+}
