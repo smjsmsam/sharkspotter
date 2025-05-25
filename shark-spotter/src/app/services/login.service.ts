@@ -27,7 +27,7 @@ export class LoginService{
     }
 
     public async logout(): Promise<any> {
-        const response = await firstValueFrom(this.http.post('http://localhost:3000/api/addReport', ""));
+        const response = await firstValueFrom(this.http.post('http://localhost:3000/api/userLogout', ""));
         return response;
     }
     
